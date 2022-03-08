@@ -59,9 +59,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/auth/**").permitAll() // el permitAll da acceso a que sean publicas las rutas con ese prefijo
-				.antMatchers("/api/test/**").permitAll()
-                .antMatchers("/swagger-ui.html","/swagger-ui","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security",  "/webjars/**").permitAll()
+				//.antMatchers("/auth/**").permitAll() // el permitAll da acceso a que sean publicas las rutas con ese prefijo
+				//.antMatchers("/api/test/**").permitAll()
+                //.antMatchers("/swagger-ui.html","/swagger-ui","/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security",  "/webjars/**").permitAll()
+				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated();
 
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
