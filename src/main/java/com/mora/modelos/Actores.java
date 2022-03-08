@@ -5,6 +5,7 @@ public class Actores {
 	private int id;
 	private String nombre_completo;
 	private int activo;
+	
 	public int getActivo() {
 		return activo;
 	}
@@ -39,11 +40,13 @@ public class Actores {
 		super();
 		this.id = id;
 		this.nombre_completo = nombre_completo;
+		this.activo = activo;
+		
 			}
 
 	@Override
 	public String toString() {
-		return "Actores [id=" + id + ", nombre=" + nombre_completo + "]";
+		return "Actores [id=" + id + ", nombre=" + nombre_completo +  ",  activo="+ activo +"]";
 	}
 	
 	

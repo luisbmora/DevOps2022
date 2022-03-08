@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import com.mora.modelos.Actores;
+import com.mora.modelos.Perfil;
 
 @Repository
 public class ActoresJDBC implements ActoresDAO {
@@ -45,11 +46,11 @@ public class ActoresJDBC implements ActoresDAO {
 	public void modificar(int id, Actores actores) {
 		String sql= "UPDATE actores SET "
 				+ "nombre_completo = ?, "
-				+ "activo = ?,"
+				+ "activo = ?"
 				+ " WHERE id = ?";
 		conexion.update(sql, 
 				actores.getNombre(), 
-				actores.getActivo(),
+				actores.getActivo(),  
 				id);
 	}
 	
