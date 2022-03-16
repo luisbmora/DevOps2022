@@ -33,10 +33,10 @@ public class CategoriasJDBC implements CategoriasDAO {
 	public void desactivar(int id, int activo) {
 		//String sql = "DELETE FROM categorias WHERE id = ? ";
 		String sql = "UPDATE categorias SET "
-				+ "activo = ? "
+				+ "activo = 0 ,"
+				+ "eliminado = NOW()"
 				+ "WHERE id = ? ";
 		conexion.update(sql,
-				activo,//quitar si se tiene que eliminar 
 				id);
 	}
 
@@ -44,37 +44,20 @@ public class CategoriasJDBC implements CategoriasDAO {
 	public void modificar(int id, Categorias categorias) {
 		String sql= "UPDATE categorias SET "
 				+ "clasificacion = ?, "
-				+ "descripcion = ?,"
-				+ "activo = ? "
+				+ "descripcion = ?"
 				+ " WHERE id = ?";
 		conexion.update(sql, 
 				categorias.getClasificacion(), 
-				categorias.getDescripcion(),
-				categorias.getActivo(),  
+				categorias.getDescripcion(), 
 				id);
 	}
 	
 	@Override
 	public int insertar(Categorias nueva_categoria) {
-		SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(conexion);
-        //System.out.println(nuevo_plan.toString()+ " hay que ver");
-        
-		List<String> columnas = new ArrayList<>();
-		columnas.add("clasificacion");
-		columnas.add("descripcion");
-        columnas.add("activo");
-        simpleJdbcInsert.setTableName("categorias");
-        simpleJdbcInsert.setColumnNames(columnas);
-        
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("clasificacion", nueva_categoria.getClasificacion());
-        parameters.put("descripcion", nueva_categoria.getDescripcion());
-        parameters.put("activo", nueva_categoria.getActivo());
-        
-        simpleJdbcInsert.setGeneratedKeyName("id");   
-        
-        int id = simpleJdbcInsert.executeAndReturnKey(parameters).intValue();
-        
-		return id;
-	}
+		String sql = "INSERT INTO categorias (clasificacion, descripcion) VALUES (?,?)";
+		conexion.update(sql,
+				nueva_categoria.getClasificacion(),
+				nueva_categoria.getDescripcion());
+		sql = "SELECT LAST_INSERT_ID()";
+		return conexion.queryForObject(sql, Integer.class);	}
 }

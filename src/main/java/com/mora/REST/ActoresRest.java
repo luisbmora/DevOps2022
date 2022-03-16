@@ -27,20 +27,20 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 
-@RequestMapping ("/Actores")
+@RequestMapping ("/actores")
 @RestController
 public class ActoresRest {
 	Logger log = LoggerFactory.getLogger(ActoresRest.class);
 	@Autowired
 	ActoresService ps;
 
-	@PostMapping("/{idActor}/Actores")
+	@PostMapping
 	@ApiOperation(value="Web service para insertar un nuevo actor", response=Actores[].class)
-	public ResponseEntity<Respuesta> crearCliente(@PathVariable int idActor, @RequestBody Actores actores) {
+	public ResponseEntity<Respuesta> crearCliente(@RequestBody Actores actores) {
 		Respuesta resp = new Respuesta();
 		//log.info(plan.getDescripcion()+ " jhdkjshdfkljshd");
 		try {
-			 ps.insertar(actores, idActor);
+			 ps.insertar(actores);
 		} catch (Exception e) {
 			log.error(e.getMessage());
 			e.printStackTrace();

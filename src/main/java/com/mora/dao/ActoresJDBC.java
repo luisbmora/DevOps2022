@@ -32,47 +32,32 @@ public class ActoresJDBC implements ActoresDAO {
 	}
 	
 	@Override
-	public void desactivar(int id, int activo) {
+	public void desactivar(int id) {
 		//String sql = "DELETE FROM actores WHERE id = ? ";
 		String sql = "UPDATE actores SET "
-				+ "activo = ? "
+				+ "activo = 0, "
+				+ "eliminado = NOW()"
 				+ "WHERE id = ? ";
-		conexion.update(sql,
-				activo,//quitar si se tiene que eliminar 
+		conexion.update(sql, 
 				id);
 	}
 
 	@Override
 	public void modificar(int id, Actores actores) {
 		String sql= "UPDATE actores SET "
-				+ "nombre_completo = ?, "
-				+ "activo = ?"
+				+ "nombre_completo = ? "
 				+ " WHERE id = ?";
 		conexion.update(sql, 
-				actores.getNombre(), 
-				actores.getActivo(),  
+				actores.getNombre_completo(), 
 				id);
 	}
 	
 	@Override
-	public int insertar(Actores nuevo_actor, int idActores) {
-		SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(conexion);
-        //System.out.println(nuevo_plan.toString()+ " hay que ver");
-        
-		List<String> columnas = new ArrayList<>();
-		columnas.add("nombre_completo");
-        columnas.add("activo");
-        simpleJdbcInsert.setTableName("actores");
-        simpleJdbcInsert.setColumnNames(columnas);
-        
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("nombre_completo", nuevo_actor.getNombre());
-        parameters.put("activo", nuevo_actor.getActivo());
-        
-        simpleJdbcInsert.setGeneratedKeyName("id");   
-        
-        int id = simpleJdbcInsert.executeAndReturnKey(parameters).intValue();
-        
-		return id;
+	public int insertar(Actores nuevo_actor) {
+		String sql = "INSERT INTO actores (nombre_completo) VALUES (?)";
+		conexion.update(sql,
+				nuevo_actor.getNombre_completo());
+		sql = "SELECT LAST_INSERT_ID()";
+		return conexion.queryForObject(sql, Integer.class);
 	}
 }

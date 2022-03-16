@@ -12,5 +12,5 @@ public interface ActoresService {
 	public Actores buscar(int id);
 	public void desactivar(int id, int activo);
 	public void modificar(int id, Actores actores);
-	public int insertar(Actores nuevo_actor, int idActor);
+	public int insertar(Actores nuevo_actor);
 }

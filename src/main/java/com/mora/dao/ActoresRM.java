@@ -14,8 +14,11 @@ public class ActoresRM  implements RowMapper<Actores>{
 	public Actores mapRow(ResultSet rs, int rowNum) throws SQLException{
 		Actores  actores =  new Actores();
 		actores.setId(rs.getInt("id"));
-		actores.setNombre(rs.getString("nombre_completo"));
+		actores.setNombre_completo(rs.getString("nombre_completo"));
 		actores.setActivo(rs.getInt("activo"));
+		actores.setCreado(rs.getDate("creado"));
+		actores.setModificado(rs.getDate("modificado"));
+		actores.setEliminado(rs.getDate("eliminado"));
 		return actores;
 	}
 }

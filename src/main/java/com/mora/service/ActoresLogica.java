@@ -26,7 +26,7 @@ public class ActoresLogica implements ActoresService{
 
 	@Override
 	public void desactivar(int id, int activo) {
-		 repositorio.desactivar(id, activo);
+		 repositorio.desactivar(id);
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class ActoresLogica implements ActoresService{
 	}
 
 	@Override
-	public int insertar(Actores nuevo_actor, int idActor) {
-		return repositorio.insertar(nuevo_actor, idActor);
+	public int insertar(Actores nuevo_actor) {
+		return repositorio.insertar(nuevo_actor);
 	}
 
 	

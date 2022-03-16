@@ -8,8 +8,8 @@ public interface ActoresDAO {
 	
 	public List<Actores> consultar();
 	public Actores buscar(int id);
-	public void desactivar(int id, int activo);
+	public void desactivar(int id);
 	public void modificar(int id, Actores actores);
-	public int insertar(Actores nuevo_actor, int idActor);
+	public int insertar(Actores nuevo_actor);
 }
 

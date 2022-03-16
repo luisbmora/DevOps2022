@@ -17,6 +17,9 @@ public class CategoriasRM implements RowMapper<Categorias>{
 		categorias.setActivo(rs.getInt("activo"));
 		categorias.setClasificacion(rs.getString("clasificacion"));
 		categorias.setDescripcion(rs.getString("descripcion"));
+		categorias.setCreado(rs.getDate("creado"));
+		categorias.setModificado(rs.getDate("modificado"));
+		categorias.setEliminado(rs.getDate("eliminado"));
 		return categorias;
 	}
 }
