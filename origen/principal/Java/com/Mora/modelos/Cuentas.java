@@ -122,7 +122,7 @@ public class Cuentas {
 				+ ", codigo_seguridad=" + codigo_seguridad + ", tipo_tarjeta=" + tipo_tarjeta + ", planes_id="
 				+ planes_id + "]";
 	}
-	
-	
 
 }
+
+// luisRafa
