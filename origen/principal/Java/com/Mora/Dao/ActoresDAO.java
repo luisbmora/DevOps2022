@@ -12,4 +12,4 @@ public interface ActoresDAO {
 	public void modificar(int id, Actores actores);
 	public int insertar(Actores nuevo_actor);
 }
-// primer intento
+// primer intento 1.1
