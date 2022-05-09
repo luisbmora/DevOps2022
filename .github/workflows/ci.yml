@@ -35,5 +35,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
            name: backend Devops 2022
-           path: targey/ejemplo_backend-0.0.1,jar
+           path: target/ejemplo_backend-0.0.1.jar
 
