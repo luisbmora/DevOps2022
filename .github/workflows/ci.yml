@@ -30,5 +30,12 @@ jobs:
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+ 
+
+    - name: Subir   .jar
+      run: actions/upload-artifact@v1
+      with:
+        name: backend Devops 2022
+        path: targey/ejemplo_backend-0.0.1,jar
       env:
         GITHUB_TOKEN: ${{ github.token }}
