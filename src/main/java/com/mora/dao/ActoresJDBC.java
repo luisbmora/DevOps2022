@@ -61,3 +61,5 @@ public class ActoresJDBC implements ActoresDAO {
 		return conexion.queryForObject(sql, Integer.class);
 	}
 }
+
+// un comentario cualquiera
